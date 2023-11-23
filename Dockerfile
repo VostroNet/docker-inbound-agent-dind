@@ -1,11 +1,11 @@
-FROM jenkins/inbound-agent:4.11.2-4-alpine
+FROM jenkins/inbound-agent:3192.v713e3b_039fb_e-3-alpine
 USER root
 # https://github.com/docker-library/docker/blob/094faa88f437cafef7aeb0cc36e75b59046cc4b9/20.10/Dockerfile
 RUN apk add --no-cache \
 		ca-certificates \
 		openssh-client \
 		curl python3
-RUN [ ! -e /etc/nsswitch.conf ] && echo 'hosts: files dns' > /etc/nsswitch.conf
+RUN echo 'hosts: files dns' > /etc/nsswitch.conf
 
 ENV DOCKER_VERSION 20.10.8
 # TODO ENV DOCKER_SHA256
