@@ -124,4 +124,10 @@ RUN apk add nodejs npm postgresql15-client; \
 RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"; \
 	install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl; \
 	rm ./kubectl
+
+RUN wget https://github.com/mikefarah/yq/releases/download/v4.40.3/yq_linux_arm64.tar.gz -O - |\
+  tar xz && mv yq_linux_arm64 /usr/bin/yq
+
+RUN apk add --no-cache jq;
+
 CMD ["entrypoint.sh"]
