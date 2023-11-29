@@ -113,4 +113,15 @@ COPY entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
 
+RUN touch /root/.bashrc
+RUN apk add nodejs npm postgresql15-client; \
+	npm install -g yarn;
+# need glibc https://github.com/oven-sh/bun/blob/666e6158899d99cfebf5e5392cb17748131fc391/dockerhub/alpine/Dockerfile#L2
+# RUN curl -fsSL https://bun.sh/install | bash; \
+# 	echo "export BUN_INSTALL=\"\$HOME/.bun\"" >> ~/.bashrc; \
+# 	echo "export PATH=\"\$BUN_INSTALL/bin:\$PATH\"" >> ~/.bashrc;
+
+RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"; \
+	install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl; \
+	rm ./kubectl
 CMD ["entrypoint.sh"]
