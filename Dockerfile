@@ -128,6 +128,6 @@ RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/s
 RUN wget https://github.com/mikefarah/yq/releases/download/v4.40.3/yq_linux_arm64.tar.gz -O - |\
   tar xz && mv yq_linux_arm64 /usr/bin/yq
 
-RUN apk add --no-cache jq;
+RUN apk add --no-cache jq envsubst;
 
 CMD ["entrypoint.sh"]
