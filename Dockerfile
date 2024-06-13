@@ -1,4 +1,4 @@
-FROM jenkins/inbound-agent:3192.v713e3b_039fb_e-3-alpine
+FROM jenkins/inbound-agent:3248.v65ecb_254c298-1-alpine
 USER root
 # https://github.com/docker-library/docker/blob/094faa88f437cafef7aeb0cc36e75b59046cc4b9/20.10/Dockerfile
 RUN apk add --no-cache \
